@@ -4,5 +4,5 @@ class Solution:
         for i,n in enumerate(nums):
             diff = target - n
             if diff in mapp:
-                return [mapp[diff],i]
+                return [mapp[diff], i]
             mapp[n] = i
