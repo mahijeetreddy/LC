@@ -4,6 +4,6 @@ class Solution:
         for n in nums:
             if n in numset:
                 return True
-            if n not in numset:
+            else:
                 numset.add(n)
         return False
