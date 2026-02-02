@@ -17,7 +17,4 @@ class Solution:
             else:
                 stackT.append(c)
 
-        if stackS == stackT:
-            return True
-        else:
-            return False
+        return stackS == stackT
