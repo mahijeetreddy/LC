@@ -17,7 +17,6 @@ class Solution:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            
             level = list(reversed(level)) if len(res)%2 else level
             res.append(level)
         return res
