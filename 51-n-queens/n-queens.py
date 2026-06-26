@@ -5,7 +5,7 @@ class Solution:
         negDiag = set()
 
         res = []
-        board = [["."] * n for i in range(n)]
+        board = [["."] * n for _ in range(n)]
 
         def backtrack(r):
             if r == n:
