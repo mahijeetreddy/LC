@@ -3,14 +3,13 @@ class Solution:
         res = []
         comb = []
 
-        def dfs(start):
+        def dfs(i):
             if len(comb) == k:
                 res.append(comb.copy())
                 return
-            
-            for i in range(start, n+1):
-                comb.append(i)
-                dfs(i+1)
+            for j in range(i, n+1):
+                comb.append(j)
+                dfs(j+1)
                 comb.pop()
         dfs(1)
         return res
