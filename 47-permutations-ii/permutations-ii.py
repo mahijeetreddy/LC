@@ -5,7 +5,7 @@ class Solution:
             return [[]]
         perms = self.permuteUnique(nums[1:])
         for p in perms:
-            for i in range(len(p) + 1):
+            for i in range(len(p) +1):
                 p_copy = p.copy()
                 p_copy.insert(i, nums[0])
                 res.append(p_copy)
