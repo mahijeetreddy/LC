@@ -10,16 +10,13 @@ class Solution:
         """
         if not head or not head.next:
             return
-
-        slow = head
-        fast = head
+        slow, fast = head, head
 
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
 
-        prev = None
-        curr = slow.next
+        prev, curr = None, slow.next
         slow.next = None
 
         while curr:
@@ -28,11 +25,14 @@ class Solution:
             prev = curr
             curr = nxt
         
+        #merge:
         first = head
         second = prev
+
         while second:
             first_next = first.next
             second_next = second.next
+
             first.next = second
             second.next = first_next
 
