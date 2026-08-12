@@ -21,8 +21,23 @@ class Solution:
                 tail = tail.next
             tail.next = curr1 or curr2
             return dummy.next
+        # SEQUENTIAL MERGING:
+        # for i in range(len(lists) -1):
+        #     lists[i+1] = merge2(lists[i], lists[i+1])
 
-        for i in range(len(lists) -1):
-            lists[i+1] = merge2(lists[i], lists[i+1])
+        # return lists[-1]
 
-        return lists[-1]
+        #Divide and Conquer
+
+        while len(lists) > 1:
+            merged = []
+
+            for i in range(0, len(lists), 2):
+                list1 = lists[i]
+                list2 = lists[i+1] if (i+1)< len(lists) else None
+
+                merged.append(merge2(list1, list2))
+
+            lists = merged
+
+        return lists[0]
