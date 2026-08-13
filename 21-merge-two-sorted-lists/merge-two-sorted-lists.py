@@ -10,7 +10,7 @@ class Solution:
         curr1, curr2 = list1, list2
 
         while curr1 and curr2:
-            if curr1.val <= curr2.val:
+            if curr1.val<= curr2.val:
                 tail.next = curr1
                 curr1 = curr1.next
             else:
@@ -18,4 +18,5 @@ class Solution:
                 curr2 = curr2.next
             tail = tail.next
         tail.next = curr1 or curr2
+
         return dummy.next
