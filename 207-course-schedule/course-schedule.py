@@ -5,6 +5,7 @@ class Solution:
         for crs, pre in prerequisites:
             preMap[crs].append(pre)
         visit = set()
+
         def dfs(crs):
             if crs in visit:
                 return False
@@ -15,7 +16,6 @@ class Solution:
                 if not dfs(pre): return False
             visit.remove(crs)
             preMap[crs] = []
-
             return True
         for crs in range(numCourses):
             if not dfs(crs): return False
