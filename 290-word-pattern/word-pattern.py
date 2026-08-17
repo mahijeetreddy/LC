@@ -1,23 +1,20 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         words = s.split()
-        if len(words) != len(pattern):
+        if len(pattern)!= len(words):
             return False
 
-        sett = {}
-        used_words = set()
+        pToW = {}
+        wToP = {}
 
-        for i in range(len(pattern)):
-            char = pattern[i]
-            word = words[i]
+        for p,w in zip(pattern, words):
+            if p in pToW and pToW[p]!= w:
+                return False
+            if w in wToP and wToP[w]!= p:
+                return False
 
-            if char in sett:
-                if sett[char] != word:
-                    return False
-            else:
-                if word in used_words:
-                    return False
-                sett[char] = word
-                used_words.add(word)
-
+            pToW[p] = w
+            
+            wToP[w] = p
+            
         return True
