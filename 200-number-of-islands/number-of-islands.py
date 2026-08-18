@@ -9,6 +9,7 @@ class Solution:
                 return
             visit.add((r,c))
             directions = [[0,1],[1,0],[-1,0],[0,-1]]
+
             for dr, dc in directions:
                 row = r + dr
                 col = c + dc
@@ -19,5 +20,4 @@ class Solution:
                 if grid[r][c] == "1" and (r,c) not in visit:
                     islands +=1
                     dfs(r,c)
-
         return islands
