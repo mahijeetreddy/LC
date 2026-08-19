@@ -9,7 +9,6 @@ class Solution:
         for i in range(0,n-k):
             windowSum -=arr[i]
             windowSum += arr[i+k]
-            subwindavg = windowSum//k
-            if subwindavg>= threshold:
+            if windowSum >= threshold * k:
                 res+=1
         return res
