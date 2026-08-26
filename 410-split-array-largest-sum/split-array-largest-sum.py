@@ -1,17 +1,17 @@
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
+        l,r = max(nums), sum(nums)
+
         def canSplit(largest):
-            subarray = 0
+            subarrays = 1
             currSum = 0
             for n in nums:
-                currSum += n
-                if currSum > largest:
-                    subarray +=1
+                currSum +=n
+                if currSum> largest:
+                    subarrays +=1
                     currSum = n
-            return subarray + 1<= k
+            return subarrays <= k
 
-        l, r = max(nums), sum(nums)
-        res = r #it can have a max value of sum of the array itself
         while l<=r:
             mid = l + ((r-l)//2)
 
