@@ -7,8 +7,8 @@ class Solution:
             if n == 0:
                 curMin, curMax = 1,1
                 continue
-            tmp = n*curMax
-            curMax = max(n, n*curMax, n*curMin)
-            curMin = min(n, tmp, n*curMin)
+            tmp = curMax * n
+            curMax = max(n, n*curMax, n * curMin)
+            curMin = min(n, n*curMin, tmp)
             res = max(res, curMax)
         return res
