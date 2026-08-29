@@ -3,7 +3,11 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        mapp = Counter(nums)
+        mapp = defaultdict(int)
+        
+        for n in nums:
+            mapp[n] = 1 + mapp[n]
+
         i = 0
 
         for color in range(3):
