@@ -1,15 +1,14 @@
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         res = []
-        comb = []
 
-        def dfs(i):
+        def backtrack(start, comb):
             if len(comb) == k:
                 res.append(comb.copy())
                 return
-            for j in range(i, n+1):
-                comb.append(j)
-                dfs(j+1)
+            for i in range(start, n+1):
+                comb.append(i)
+                backtrack(i+1, comb)
                 comb.pop()
-        dfs(1)
+        backtrack(1,[])
         return res
