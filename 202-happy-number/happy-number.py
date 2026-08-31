@@ -2,12 +2,14 @@ class Solution:
     def isHappy(self, n: int) -> bool:
         seen = set()
 
-        while n != 1 and n not in seen:
+        def repsquare(n):
+            if n == 1:
+                return True
+            if n in seen:
+                return False
             seen.add(n)
-            ns = str(n)
-            sum = 0
-            for i in ns:
-                sum += int(i) ** 2
-            n = sum
-
-        return n == 1
+            total = 0
+            for c in str(n):
+                total += int(c) ** 2
+            return repsquare(total)
+        return repsquare(n)
