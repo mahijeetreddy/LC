@@ -3,10 +3,10 @@ class Solution:
         res = []
         nums.sort()
 
-        for i, a in enumerate(nums):
+        for i,a in enumerate(nums):
             if i>0 and a == nums[i-1]:
                 continue
-            l, r = i+1, len(nums) -1
+            l,r = i+1, len(nums) - 1
             while l<r:
                 threeSum = a + nums[l] + nums[r]
                 if threeSum>0:
