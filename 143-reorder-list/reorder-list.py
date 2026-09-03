@@ -8,33 +8,32 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head or not head.next:
-            return
         slow, fast = head, head
-
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-
-        prev, curr = None, slow.next
+        second = slow.next
         slow.next = None
 
-        while curr:
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
-        
-        #merge:
-        first = head
-        second = prev
+        def reverse(head):
+            if not head: return None
+            prev, curr = None, head
+            while curr:
+                nxt = curr.next
+                curr.next = prev
+                prev = curr
+                curr = nxt
+            return prev
+        second = reverse(second)
+        first, second = head, second
 
         while second:
-            first_next = first.next
-            second_next = second.next
-
+            temp1, temp2 = first.next, second.next
             first.next = second
-            second.next = first_next
+            second.next = temp1
 
-            first = first_next
-            second = second_next
+            first = temp1
+            second = temp2
+        
+
+        
