@@ -2,12 +2,11 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         longest = 0
         seen = set()
-        left = 0
-        for right, c in enumerate(s):
-            while c in seen:
+        left=0
+        for r in range(len(s)):
+            while s[r] in seen:
                 seen.remove(s[left])
-                left+=1
-            seen.add(c)
-            longest = max(longest, right - left + 1)
-
+                left +=1
+            seen.add(s[r])
+            longest = max(longest, r-left +1)
         return longest
