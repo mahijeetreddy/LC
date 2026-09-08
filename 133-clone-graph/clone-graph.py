@@ -20,3 +20,4 @@ class Solution:
                 copy.neighbors.append(dfs(nei))
             return copy
         return dfs(node) if node else None
+
