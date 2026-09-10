@@ -3,9 +3,9 @@ class Solution:
         n = len(nums)
         threshold = n//3
         res = []
-        mapp = Counter(nums)
-
-        for t,c in mapp.items():
-            if c > threshold:
-                res.append(t)
+        count = Counter(nums)
+        for n in nums:
+            if count[n] > threshold:
+                if n not in res:
+                    res.append(n)
         return res
