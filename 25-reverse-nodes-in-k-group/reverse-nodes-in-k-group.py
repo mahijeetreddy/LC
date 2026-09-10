@@ -6,8 +6,8 @@
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         dummy = ListNode(0)
-        tail = dummy
 
+        tail = dummy
         curr = head
         while curr:
             stack = []
@@ -22,7 +22,6 @@ class Solution:
                 node = stack.pop()
                 tail.next = node
                 tail = node
+            tail.next = temp
             curr = temp
-        tail.next = None
-
         return dummy.next
