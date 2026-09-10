@@ -1,11 +1,12 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        threshold = n//3
-        res = []
+        threshold = len(nums) // 3
         count = Counter(nums)
-        for n in nums:
-            if count[n] > threshold:
-                if n not in res:
-                    res.append(n)
+
+        res = []
+
+        for num, freq in count.items():
+            if freq > threshold:
+                res.append(num)
+
         return res
