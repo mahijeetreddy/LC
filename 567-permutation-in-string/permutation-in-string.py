@@ -1,40 +1,15 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        if len(s1) > len(s2):
-            return False
-
-        s1Count, s2Count = [0]*26, [0]*26
-
-        for i in range(len(s1)):
-            s1Count[ord(s1[i]) - ord('a')] += 1
-            s2Count[ord(s2[i]) - ord('a')] += 1
-
-        matches = 0
-        for i in range(26):
-            if s1Count[i] == s2Count[i]:
-                matches += 1
-
-        l = 0
-        for r in range(len(s1), len(s2)):
-            if matches == 26:
+        count1 = Counter(s1)
+        winlen = len(s1) #2 in this case
+        left = 0
+        right = left + winlen
+        for i in range(len(s2)):
+            window = s2[left:right]
+            count2 = Counter(window)
+            if count1 == count2:
                 return True
+            left +=1
+            right +=1
+        return False
 
-            # add right character
-            index = ord(s2[r]) - ord('a')
-            s2Count[index] += 1
-            if s2Count[index] == s1Count[index]:
-                matches += 1
-            elif s2Count[index] == s1Count[index] + 1:
-                matches -= 1
-
-            # remove left character
-            index = ord(s2[l]) - ord('a')
-            s2Count[index] -= 1
-            if s2Count[index] == s1Count[index]:
-                matches += 1
-            elif s2Count[index] == s1Count[index] - 1:
-                matches -= 1
-
-            l += 1
-
-        return matches == 26
