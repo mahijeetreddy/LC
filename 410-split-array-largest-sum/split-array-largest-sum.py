@@ -1,19 +1,19 @@
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
-        l,r = max(nums), sum(nums)
-
+        l, r = max(nums), sum(nums)
+        res = r
         def canSplit(largest):
-            subarrays = 1
-            currSum = 0
+            subarray = 1
+            curSum = 0
             for n in nums:
-                currSum +=n
-                if currSum> largest:
-                    subarrays +=1
-                    currSum = n
-            return subarrays <= k
-
+                curSum += n
+                if curSum > largest:
+                    subarray +=1
+                    curSum = n
+            return subarray <= k
+        
         while l<=r:
-            mid = l + ((r-l)//2)
+            mid = l + ((r-l) //2)
 
             if canSplit(mid):
                 res = mid
