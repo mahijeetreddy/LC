@@ -5,14 +5,15 @@ class Solution:
             "}":"{",
             ")":"("
         }
-
         stack = []
 
         for c in s:
             if c in closeToOpen:
-                if not stack or stack[-1] != closeToOpen[c]:
+                if stack and closeToOpen[c] == stack[-1]:
+                    stack.pop()
+                else:
                     return False
-                stack.pop()
+
             else:
                 stack.append(c)
         return not stack
