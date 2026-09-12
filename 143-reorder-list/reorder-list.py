@@ -8,15 +8,7 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        slow, fast = head, head
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-        second = slow.next
-        slow.next = None
-
         def reverse(head):
-            if not head: return None
             prev, curr = None, head
             while curr:
                 nxt = curr.next
@@ -24,16 +16,24 @@ class Solution:
                 prev = curr
                 curr = nxt
             return prev
-        second = reverse(second)
-        first, second = head, second
 
-        while second:
-            temp1, temp2 = first.next, second.next
+        if not head or not head.next: return
+
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        first = head
+        second = reverse(slow)
+
+        while second.next:
+            tmp1 = first.next
+            tmp2 = second.next
+
             first.next = second
-            second.next = temp1
+            second.next = tmp1
 
-            first = temp1
-            second = temp2
-        
-
-        
+            first = tmp1
+            second = tmp2
