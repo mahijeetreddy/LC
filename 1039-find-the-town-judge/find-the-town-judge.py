@@ -1,11 +1,12 @@
 class Solution:
-    def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        score = [0] * (n+1)
+    def findJudge(self, n: int, trust: list[list[int]]) -> int:
+        incoming, outgoing = defaultdict(int), defaultdict(int)
 
-        for a,b in trust:
-            score[a] -=1
-            score[b] +=1
-        for person in range(1, n+1):
-            if score[person] == n-1:
-                return person
+        for src, dst in trust:
+            outgoing[src] = outgoing[src] + 1
+            incoming[dst] +=1
+        
+        for i in range(1, n+1):
+            if outgoing[i] == 0 and incoming[i] == n - 1:
+                return i
         return -1
