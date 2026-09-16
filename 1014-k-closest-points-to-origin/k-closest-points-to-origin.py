@@ -5,7 +5,6 @@ class Solution:
         
         for i, point in enumerate(points):
             dist = point[0]**2 + point[1]**2
-            points[i].append(dist)
             heapq.heappush(minHeap, [dist, point[0], point[1]])
         
         for i in range(k):
