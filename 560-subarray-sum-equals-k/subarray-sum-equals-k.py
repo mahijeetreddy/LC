@@ -7,6 +7,6 @@ class Solution:
         for n in nums:
             curSum +=n
             diff = curSum - k
-            res += prefix.get(diff,0)
+            res += prefix.get(diff, 0)
             prefix[curSum] = 1 + prefix.get(curSum, 0)
         return res
